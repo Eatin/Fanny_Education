@@ -1,0 +1,14 @@
+
+spring:
+    mvc:
+        view:
+             # 定位模板的目录
+            prefix: classpath:/templates/
+            # 给返回的页面添加后缀名
+            suffix: .html
+            #静态资源访问
+        static-path-pattern: /static/**
+
+
+
+
