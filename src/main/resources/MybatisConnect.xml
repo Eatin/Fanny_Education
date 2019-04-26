@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias type="MainProgram.DBConnector.Bean.User" alias="User"></typeAlias>
+    </typeAliases>
+    <!--&amp;characterEncoding=UTF-8-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+
+                <property name="url" value="localhost:3306/Fanny?useUnicode=true"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="123456"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+            <mapper resource="mybatis/Mapper/UserMapper.xml"></mapper>
+
+    </mappers>
+</configuration>

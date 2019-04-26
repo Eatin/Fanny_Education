@@ -9,6 +9,31 @@ spring:
             #静态资源访问
         static-path-pattern: /static/**
 
+    datasource:
+        url: jdbc:mysql://localhost:3306/Fanny?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: 123456
+
+
+mybatis :
+    mapper-locations : classpath*:mybatis/Mapper/*Mapper.xml
+#    config-location: MybatisConnect.xml
+#mybatis:useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#  config-location: MybatisConnect.xml
+#mybatis:
+#  config-location: classpath:/mybatis/MybatisConnect.xml
+
+
+
+#mybatis:
+#
+#  config-location: classpath:/mybatis/MybatisConnect.xml
+##
+#    datasource:
+#        driver-class-name: com.mysql.jdbc.Driver
+#            url : jdbc:mysql://47.102.221.57:3306/Fanny?useUnicode=true&characterEncoding=UTF-8
+#            username : root
+#            password : 123456
 
 
 
