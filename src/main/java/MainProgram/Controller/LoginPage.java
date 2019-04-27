@@ -20,15 +20,11 @@ public class LoginPage {
     @RequestMapping(value = "/loginPage", method = {RequestMethod.POST, RequestMethod.GET})
     public String LoginPage(User user) {
 
-
-//        user.toString();
         Logger log = Logger.getLogger(LoginPage.class);
         SqlSession sqlSession = null;
         SqlSessionFactory sessionFactory;
 
         try {
-//            sqlSession = SqlSessionFactoryUtils.openSqlSession();
-//            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             System.out.println(userMapper.getById(1));
 
         } finally {

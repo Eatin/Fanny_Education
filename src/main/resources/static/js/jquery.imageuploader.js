@@ -12,7 +12,7 @@
                 selectButtonCopy: 'Select Files',
                 secondarySelectButtonCopy: 'Select More Files',
                 dropZone: $(this),
-                fileTypeWhiteList: ['jpg', 'png', 'jpeg', 'gif', 'pdf'],
+                fileTypeWhiteList: ['jpg', 'png', 'jpeg', 'gif', 'pdf','docx'],
                 badFileTypeMessage: 'Sorry, we\'re unable to accept this type of file.',
                 ajaxUrl: '/ajax/upload',
                 testMode: false
@@ -174,8 +174,9 @@
             }
 
             function cleanName (name) {
-                name = name.replace(/\s+/gi, '-'); // Replace white space with dash
-                return name.replace(/[^a-zA-Z0-9.\-]/gi, ''); // Strip any special characters
+                // name = name.replace(/\s+/gi, '-'); // Replace white space with dash
+                // return name.replace(/[^a-zA-Z0-9.\-]/gi, ''); // Strip any special characters
+                return name;
             }
 
             function uploadSubmitHandler () {
