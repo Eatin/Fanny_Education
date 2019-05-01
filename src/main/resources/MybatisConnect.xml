@@ -21,6 +21,7 @@
     </environments>
     <mappers>
             <mapper resource="mybatis/Mapper/UserMapper.xml"></mapper>
+            <mapper resource="mybatis/Mapper/VideoMapper.xml"></mapper>
 
     </mappers>
 </configuration>

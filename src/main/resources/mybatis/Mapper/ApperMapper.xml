@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--[{"Name":"张三","Sport":"25","Enterain":"25","Event":"25","Weight":"1","ID":"1"},{"Name":"李四","Sport":"23","Enterain":"23","Event":"23","Weight":"1","ID":"2"},{"Name":"王五","Sport":"24","Enterain":"24","Event":"24","Weight":"1","ID":"3"}]-->
+<mapper namespace="MainProgram.DBConnector.DAO.ApperMapper">
+    <resultMap id="apperMap" type="MainProgram.DBConnector.Bean.Apper">
+        <id property="id" column="id"/>
+        <!--<result property="Name" column="Name"/>-->
+        <result property="Sport" column="Sport"/>
+        <result property="Event" column="Event"/>
+        <result property="Entertain" column="Entertain"/>
+        <result property="Tel" column="User_telephone"/>
+
+    </resultMap>
+
+    <sql id="queryCondition_apper">
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="User_telephone != null and User_telephone != ''">
+                and Tel = #{User_telephone}
+            </if>
+            <if test="Sport != null and Sport != ''">
+                and Sport = #{Sport}
+            </if>
+            <if test="Event != null and Event != ''">
+                and Event = #{Event}
+            </if>
+            <if test="Entertain != null and Entertain != ''">
+                and Entertain = #{Entertain}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getByMap_apper" parameterType="map" resultMap="apperMap">
+        SELECT * FROM apper
+        <include refid="queryCondition_apper" />
+    </select>
+
+    <select id="getById_apper" parameterType="int" resultMap="apperMap">
+    	SELECT * FROM apper WHERE id =#{id}
+    </select>
+
+    <insert id="create_apper" parameterType="MainProgram.DBConnector.Bean.Apper">
+        <!--<selectKey resultType="int"  order="AFTER" keyProperty="Name" >-->
+        <!--SELECT LAST_INSERT_ID()-->
+        <!--</selectKey>-->
+        INSERT INTO apper(
+
+        Sport,
+        Event,
+        Entertain,
+        User_telephone
+        create_time
+        )VALUES(
+
+        #{Sport},
+        #{Event},
+        #{Entertain},
+        #{Tel},
+        NOW()
+
+        )
+    </insert>
+
+    <update id="update_apper" parameterType="MainProgram.DBConnector.Bean.Apper">
+		UPDATE apper SET
+			ID = #{ID},
+
+			Sport = #{Sport},
+			Event = #{Event},
+			Entertain = #{Entertain},
+			User_telephone = #{Tel},
+
+		WHERE ID = #{ID}
+    </update>
+
+    <delete id="delete_apper" parameterType="int">
+    	DELETE FROM apper WHERE ID = #{ID}
+    </delete>
+
+</mapper>

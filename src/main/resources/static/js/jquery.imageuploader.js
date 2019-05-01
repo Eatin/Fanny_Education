@@ -12,10 +12,12 @@
                 selectButtonCopy: 'Select Files',
                 secondarySelectButtonCopy: 'Select More Files',
                 dropZone: $(this),
-                fileTypeWhiteList: ['jpg', 'png', 'jpeg', 'gif', 'pdf','docx'],
+                fileTypeWhiteList: ['jpg', 'png', 'jpeg', 'gif', 'pdf','docx','mp4'],
                 badFileTypeMessage: 'Sorry, we\'re unable to accept this type of file.',
                 ajaxUrl: '/ajax/upload',
-                testMode: false
+                testMode: false,
+
+
             }, options);
 
             var state = {
@@ -180,6 +182,7 @@
             }
 
             function uploadSubmitHandler () {
+
                 if (state.fileBatch.length !== 0) {
                     var data = new FormData();
                     for (var i = 0; i < state.fileBatch.length; i++) {
@@ -190,8 +193,13 @@
                         url: options.ajaxUrl,
                         data: data,
                         cache: false,
+                        async:true,
                         contentType: false,
-                        processData: false
+                        processData: false,
+                        success : function (msg) {
+                            alert(msg);
+                            window.location.href = "/vmsg2"
+                        }
                     });
                 }
             }

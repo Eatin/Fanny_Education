@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        <!--[{"Name":"张三","Sport":"25","Enterain":"25","Event":"25","Weight":"1","ID":"1"},{"Name":"李四","Sport":"23","Enterain":"23","Event":"23","Weight":"1","ID":"2"},{"Name":"王五","Sport":"24","Enterain":"24","Event":"24","Weight":"1","ID":"3"}]-->
+<mapper namespace="MainProgram.DBConnector.DAO.VideoMapper">
+    <resultMap id="videoMap" type="MainProgram.DBConnector.Bean.Video">
+        <id property="ID" column="ID"/>
+        <result property="Name" column="Name"/>
+        <result property="Sport" column="Sport_News"/>
+        <result property="Event" column="Event_news"/>
+        <result property="Entertain" column="Entertainment_News"/>
+        <result property="Weight" column="Round"/>
+
+    </resultMap>
+
+    <sql id="queryCondition_video">
+        <where>
+            <if test="ID != null and ID != ''">
+                and ID = #{ID}
+            </if>
+            <if test="Name != null and Name != ''">
+                and Name = #{Name}
+            </if>
+            <if test="Sport_News != null and Sport_News != ''">
+                and Sport_News = #{Sport}
+            </if>
+            <if test="Event_news != null and Event_news != ''">
+                and Event_news = #{Event}
+            </if>
+            <if test="Entertainment_News != null and Entertainment_News != ''">
+                and Entertainment_News = #{Entertain}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getByMap_video" parameterType="map" resultMap="videoMap">
+        SELECT * FROM video
+        <include refid="queryCondition_video" />
+    </select>
+
+    <select id="getById_video" parameterType="int" resultMap="videoMap">
+    	SELECT * FROM video WHERE id =#{id}
+    </select>
+
+    <insert id="create_video" parameterType="MainProgram.DBConnector.Bean.Video">
+        <!--<selectKey resultType="int"  order="AFTER" keyProperty="Name" >-->
+            <!--SELECT LAST_INSERT_ID()-->
+        <!--</selectKey>-->
+        INSERT INTO video(
+
+        Name,
+        Sport_News,
+        Event_news,
+        Entertainment_News,
+        Round,
+        create_time
+        )VALUES(
+
+        #{Name},
+        #{Sport},
+        #{Event},
+        #{Entertain},
+        #{Weight},
+        NOW()
+
+        )
+    </insert>
+
+    <update id="update_video" parameterType="MainProgram.DBConnector.Bean.Video">
+		UPDATE video SET
+			ID = #{ID},
+			Name = #{Name},
+			Sport_News = #{Sport},
+			Event_news = #{Event},
+			Entertainment_News = #{Entertain},
+			Round = #{Weight}
+		WHERE ID = #{ID}
+    </update>
+
+    <delete id="delete_video" parameterType="int">
+    	DELETE FROM video WHERE ID = #{ID}
+    </delete>
+
+</mapper>
