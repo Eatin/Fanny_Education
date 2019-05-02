@@ -15,6 +15,7 @@ public class VideoService {
     private VideoMapper videoMapper;
 
     public int create_video(Video video){
+
         videoMapper.create_video(video);
         return 1;
     }

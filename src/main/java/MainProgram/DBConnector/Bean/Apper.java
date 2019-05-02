@@ -2,11 +2,10 @@ package MainProgram.DBConnector.Bean;
 
 public class Apper {
     int id;
-    int Event;
-    int Sport;
-    int Entertain;
+    double Event;
+    double Sport;
+    double Entertain;
     String Tel;
-
 
 
     public int getId() {
@@ -17,27 +16,27 @@ public class Apper {
         this.id = id;
     }
 
-    public int getEvent() {
+    public double getEvent() {
         return Event;
     }
 
-    public void setEvent(int event) {
+    public void setEvent(double event) {
         Event = event;
     }
 
-    public int getSport() {
+    public double getSport() {
         return Sport;
     }
 
-    public void setSport(int sport) {
+    public void setSport(double sport) {
         Sport = sport;
     }
 
-    public int getEntertain() {
+    public double getEntertain() {
         return Entertain;
     }
 
-    public void setEntertain(int entertain) {
+    public void setEntertain(double entertain) {
         Entertain = entertain;
     }
 

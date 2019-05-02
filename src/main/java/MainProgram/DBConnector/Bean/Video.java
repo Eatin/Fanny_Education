@@ -5,18 +5,10 @@ public class Video {
 
     int ID;
     String Name;
-    int Sport;
-    int Entertain;
-    int Event;
+    double Sport;
+    double Entertain;
+    double Event;
     int Weight;
-
-    public int getWeight() {
-        return Weight;
-    }
-
-    public void setWeight(int weight) {
-        Weight = weight;
-    }
 
     public int getID() {
         return ID;
@@ -30,24 +22,40 @@ public class Video {
         return Name;
     }
 
-    public void setName(String nmae) {
-        Name = nmae;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public int getSport() {
+    public double getSport() {
         return Sport;
     }
 
-    public void setSport(int sport) {
+    public void setSport(double sport) {
         Sport = sport;
     }
 
-    public int getEntertain() {
+    public double getEntertain() {
         return Entertain;
     }
 
-    public void setEntertain(int entertain) {
+    public void setEntertain(double entertain) {
         Entertain = entertain;
+    }
+
+    public double getEvent() {
+        return Event;
+    }
+
+    public void setEvent(double event) {
+        Event = event;
+    }
+
+    public int getWeight() {
+        return Weight;
+    }
+
+    public void setWeight(int weight) {
+        Weight = weight;
     }
 
     @Override
@@ -56,19 +64,9 @@ public class Video {
                 "ID=" + ID +
                 ", Name='" + Name + '\'' +
                 ", Sport=" + Sport +
-                ", Enterain=" + Entertain +
+                ", Entertain=" + Entertain +
                 ", Event=" + Event +
                 ", Weight=" + Weight +
                 '}';
-    }
-
-
-
-    public int getEvent() {
-        return Event;
-    }
-
-    public void setEvent(int event) {
-        Event = event;
     }
 }

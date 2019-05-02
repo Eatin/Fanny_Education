@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--[{"Name":"张三","Sport":"25","Enterain":"25","Event":"25","Weight":"1","ID":"1"},{"Name":"李四","Sport":"23","Enterain":"23","Event":"23","Weight":"1","ID":"2"},{"Name":"王五","Sport":"24","Enterain":"24","Event":"24","Weight":"1","ID":"3"}]-->
+<mapper namespace="MainProgram.DBConnector.DAO.AppUserMapper">
+    <resultMap id="appuserMap" type="MainProgram.DBConnector.Bean.AppUser">
+        <id property="id" column="id"/>
+        <result property="Tel" column="user"/>
+        <result property="Psd" column="psd"/>
+    </resultMap>
+
+    <sql id="queryCondition_appuser">
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="user != null and user != ''">
+                and user = #{Tel}
+            </if>
+            <if test="psd != null and psd != ''">
+                and psd = #{psd}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getByMap_appuser" parameterType="map" resultMap="appuserMap">
+        SELECT * FROM app_user
+
+        <include refid="queryCondition_appuser" />
+    </select>
+
+    <select id="getById_appuser" parameterType="int" resultMap="appuserMap">
+    	SELECT * FROM app_user WHERE id =#{id}
+    </select>
+
+    <select id="getByPsd_appuser" parameterType="MainProgram.DBConnector.Bean.AppUser" resultMap="appuserMap">
+    	SELECT * FROM app_user WHERE user =#{Tel} and psd = #{Psd}
+    </select>
+
+    <insert id="create_appuser" parameterType="MainProgram.DBConnector.Bean.AppUser">
+        INSERT INTO app_user(
+
+        user,
+        psd,
+        create_time
+
+        )VALUES(
+
+        #{Tel},
+        #{Psd},
+        NOW()
+
+        )
+    </insert>
+
+    <update id="update_appuser" parameterType="MainProgram.DBConnector.Bean.AppUser">
+		UPDATE app_user SET
+			user = #{Tel},
+			psd = #{psd},
+		WHERE id = #{id}
+    </update>
+
+    <delete id="delete_appuser" parameterType="int">
+    	DELETE FROM appuser WHERE id = #{id}
+    </delete>
+
+</mapper>

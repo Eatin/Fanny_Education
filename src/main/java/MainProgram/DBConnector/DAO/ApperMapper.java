@@ -17,6 +17,8 @@ public interface ApperMapper {
 
     Apper getById_apper(Integer id);
 
+    Apper getByTel_apper(String Tel);
+
     Integer create_apper(Apper Apper);
 
     int update_apper(Apper Apper);

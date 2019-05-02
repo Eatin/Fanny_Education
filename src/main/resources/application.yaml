@@ -10,34 +10,21 @@ spring:
         static-path-pattern: /static/**
 
     datasource:
-        url: jdbc:mysql://localhost:3306/Fanny?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        url: jdbc:mysql://localhost:3306/Fanny?useUnicode=true&serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false
         username: root
         password: 123456
 
     servlet:
       multipart:
-        max-file-size: 10MB
-        max-request-size: 10MB
+        max-file-size: 10GB
+        max-request-size: 10GB
 
 mybatis :
     mapper-locations : classpath*:mybatis/Mapper/*Mapper.xml
-#    config-location: MybatisConnect.xml
-#mybatis:useUnicode=true&characterEncoding=UTF-8&useSSL=false
-#  config-location: MybatisConnect.xml
-#mybatis:
-#  config-location: classpath:/mybatis/MybatisConnect.xml
 
 
 
-#mybatis:
-#
-#  config-location: classpath:/mybatis/MybatisConnect.xml
-##
-#    datasource:
-#        driver-class-name: com.mysql.jdbc.Driver
-#            url : jdbc:mysql://47.102.221.57:3306/Fanny?useUnicode=true&characterEncoding=UTF-8
-#            username : root
-#            password : 123456
+
 
 
 

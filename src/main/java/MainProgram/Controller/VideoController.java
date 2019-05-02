@@ -22,14 +22,13 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class VideoController {
+    public static ArrayList<String> NewFile = new ArrayList<>();
     @Autowired
     VideoMapper videoMapper;
 
-    public static ArrayList<String> NewFile = new ArrayList<>();
-
-    @RequestMapping(value = "/Getdata",method = GET)
+    @RequestMapping(value = "/Getdata", method = GET)
     @ResponseBody
-   public ArrayList<String> setNewFile(){
+    public ArrayList<String> setNewFile() {
         System.out.println(NewFile);
         return NewFile;
     }
@@ -46,22 +45,14 @@ public class VideoController {
 
     @RequestMapping("/vmsg")
     public String vmsg(Model model) {
-
-        return "/SBADMIN/filetable";
-    }
-
-    @RequestMapping(value = "/vmsg2",method = GET)
-    public String vmsg2(Model model) {
-
-        model.addAttribute("filename",NewFile);
-        return "/SBADMIN/filetab";
+        model.addAttribute("filename", NewFile);
+        return "/Table/init";
     }
 
     @RequestMapping("/GetJson")
     @ResponseBody
-    public  String getJson(String videos) {
+    public String getJson(String videos) {
         VideoService videoService = new VideoService();
-
         JSONArray json = JSONArray.parseArray(videos);
         Video video = new Video();
         if (json.size() > 0) {
@@ -74,6 +65,7 @@ public class VideoController {
                 video.setEntertain(Integer.parseInt((String) job.get("Entertain")));  // 得到 每个对象中的属性值
                 video.setEvent(Integer.parseInt((String) job.get("Event")));  // 得到 每个对象中的属性值
                 video.setWeight(Integer.parseInt((String) job.get("Weight")));  // 得到 每个对象中的属性值
+                System.out.println(video.toString());
                 videoMapper.create_video(video);
             }
 
@@ -82,13 +74,23 @@ public class VideoController {
 
     }
 
-//    @ResponseBody
+    //    @ResponseBody
     @RequestMapping("/video/getallvideo")
-    public String getAllVideo(Model model){
-        Map<String,Object> map = new HashMap<String,Object>();
-        List<Video> ls =  videoMapper.getByMap_video(map);
-        model.addAttribute("ls",ls);
-        return "/SBADMIN/fileall";
+    public String getAllVideo(Model model) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Video> ls = videoMapper.getByMap_video(map);
+        model.addAttribute("ls", ls);
+        System.out.println("查询所有视频成功");
+        return "/Table/fileall";
+    }
+
+    @RequestMapping("/video/getallvideo2")
+    @ResponseBody
+    public List<Video> getAllVideo() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Video> ls = videoMapper.getByMap_video(map);
+        System.out.println("查询所有视频成功2");
+        return ls;
     }
 }
 

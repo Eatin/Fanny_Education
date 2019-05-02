@@ -198,7 +198,7 @@
                         processData: false,
                         success : function (msg) {
                             alert(msg);
-                            window.location.href = "/vmsg2"
+                            window.location.href = "/vmsg"
                         }
                     });
                 }

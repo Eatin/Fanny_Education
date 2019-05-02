@@ -42,6 +42,10 @@
     	SELECT * FROM apper WHERE id =#{id}
     </select>
 
+    <select id="getByTel_apper" parameterType="String" resultMap="apperMap">
+    	SELECT * FROM apper WHERE User_telephone =#{Tel}
+    </select>
+
     <insert id="create_apper" parameterType="MainProgram.DBConnector.Bean.Apper">
         <!--<selectKey resultType="int"  order="AFTER" keyProperty="Name" >-->
         <!--SELECT LAST_INSERT_ID()-->

@@ -14,16 +14,8 @@ import java.util.Map;
 @Mapper
 @MapperScan
 @Component
-public interface VideoMapper {
+public interface UVMapper {
 
     List<Video> getByMap_video(Map<String, Object> map);
-
-    Video getById_video(Integer id);
-
-    Integer create_video(Video video);
-
-    int update_video(Video video);
-
-    int delete_video(Integer id);
 
 }

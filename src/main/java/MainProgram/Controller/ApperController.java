@@ -17,12 +17,17 @@ public class ApperController {
     ApperMapper apperMapper;
 
     @RequestMapping("/apper/all")
-    public String getalluser(Model model){
-        Map<String,Object> map = new HashMap<String, Object>();
+    public String getalluser(Model model) {
+        Map<String, Object> map = new HashMap<String, Object>();
         List<Apper> ls = apperMapper.getByMap_apper(map);
-        model.addAttribute("ls",ls);
+        model.addAttribute("ls", ls);
         System.out.println(ls.toString());
-        return "/SBADMIN/userall";
+        return "/Table/userall";
+    }
+
+    @RequestMapping("/UserMain")
+    public String VideoPage(){
+        return  "/Player/UserMain";
     }
 
 }
