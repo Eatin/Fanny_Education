@@ -18,7 +18,7 @@ public interface VideoMapper {
 
     List<Video> getByMap_video(Map<String, Object> map);
 
-    Video getById_video(Integer id);
+    Video getByName_video(String Name);
 
     Integer create_video(Video video);
 

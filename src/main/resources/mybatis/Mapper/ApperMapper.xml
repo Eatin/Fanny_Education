@@ -70,14 +70,14 @@
 
     <update id="update_apper" parameterType="MainProgram.DBConnector.Bean.Apper">
 		UPDATE apper SET
-			ID = #{ID},
+			id = #{id},
 
 			Sport = #{Sport},
 			Event = #{Event},
 			Entertain = #{Entertain},
-			User_telephone = #{Tel},
+			User_telephone = #{Tel}
 
-		WHERE ID = #{ID}
+		WHERE id = #{id}
     </update>
 
     <delete id="delete_apper" parameterType="int">

@@ -9,44 +9,44 @@
 <body class="text-center">
 <div class="container " style="margin:20px auto;">
 
-    <div class="text-sm-right text-info" th:text="${Tel}">
+    <div class="text-sm-right text-info" th:text="${Tel}" th:value="${Tel}" th:id="Tel">
         用户名
     </div>
     <br>
     <br>
     <br>
-    <div class="text-center text-info" th:text="${Arr[index].Video}">
+    <div class="text-center text-info" th:text="${Arr[index].Video}" th:name="VideoN">
         视频名字
     </div>
     <div class="span8 demo-video col-lg-12">
         <video class="video-js" controls
-               preload="auto" width="auto" height="350" poster="/static/vendor_for_player/images/video/poster.jpg"
-               data-setup="{}">
+               preload="auto" width="auto" height="350" data-setup="{}">
             <source th:src="'/FileAll/' + ${Arr[index].Video}" type="video/mp4">
-            <!--<source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>-->
-            <!--<source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>-->
         </video>
     </div>
     <br><br><br>
 
-    <form action="/GetArray" method="post">
+    <form>
         <div th:hidden="true">
-            <div >
+            <div>
                 <input type="text" th:value="${jsont}" th:name="jsont">
-                <input type="text" th:value="${Tel}" th:name="Tel">
-                <input type="text" th:value="${index}" th:name="index">
+                <input type="text" th:value="${Tel}" th:name="Tel" id="Tel">
+                <input type="text" th:value="${index}" th:name="index" id="indexCra">
+                <input type="text" th:value="${Arr[index].Video}" th:name="VideoN" id="VideoNCra">
 
             </div>
         </div>
         <div class="col-lg-6 btn-group">
-            <button type="submit" class="btn btn-success btn-icon-split ">
+
+            <button type="submit" formaction="/GetLast" formmethod="post" class="btn btn-success btn-icon-split ">
                     <span class="icon text-white-50">
                       <i class="fas fa-flag"></i>
                     </span>
                 <span class="text">Last</span>
             </button>
+
             <div class="my-2"></div>
-            <a href="#" class="btn btn-success btn-icon-split">
+            <a id="Unbtn" onclick="UnlikeV()" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-check"></i>
                     </span>
@@ -54,26 +54,57 @@
             </a>
 
             <div class="my-2"></div>
-            <a href="#" class="btn btn-info btn-icon-split">
+            <a onclick="likeV()" class="btn btn-info btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-info-circle"></i>
                     </span>
                 <span class="text">Like</span>
             </a>
+
             <div class="my-2"></div>
-            <a href="#" class="btn btn-info btn-icon-split" >
+            <button formaction="/GetNext" formmethod="post" type="submit" class="btn btn-info btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-exclamation-triangle"></i>
                     </span>
                 <span class="text">Next</span>
-            </a>
+            </button>
+
         </div>
     </form>
 </div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="/static/vendor_for_player/js/video.js"></script>
+
 <br><br>
+
+<script language='javascript' th:inline="javascript">
+
+
+    function UnlikeV() {
+        var videoN = [[${Arr[index].Video}]];
+        var Tel = [[${Tel}]];
+        alert("unlike" + videoN + Tel)
+        $.ajax({
+            type: 'post',
+            url: '/SetUnlike',
+            data: {'videoN': videoN, 'Tel': Tel}
+        })
+    }
+
+    function likeV() {
+        var videoN = [[${Arr[index].Video}]];
+        var Tel = [[${Tel}]];
+        alert("like" + videoN + Tel)
+        $.ajax({
+            type: 'post',
+            url: '/Setlike',
+            data: {'videoN': videoN, 'Tel': Tel}
+        })
+    }
+
+
+</script>
 
 </body>
 </html>

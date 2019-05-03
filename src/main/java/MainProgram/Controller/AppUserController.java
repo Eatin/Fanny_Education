@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,9 @@ public class AppUserController {
 
 
     @RequestMapping(value = "/User/login", method = POST)
-    public String User_lg(AppUser appUser, Model model) {
+    public ModelAndView User_lg(AppUser appUser) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/Player/UserMain");
         AppUser appUser1 = new AppUser();
         Apper apper = new Apper();
         String jsont = "[";
@@ -52,25 +55,21 @@ public class AppUserController {
         User_VideoController user_videoController = new User_VideoController();
         User_Video[] arr = user_videoController.count(apper, ls);
         int i = 0;
-
-
         while (arr[i] != null) {
-            System.out.println(JSON.toJSONString(arr[i]));
             if (i > 0) {
                 jsont = jsont + ",";
             }
             jsont = jsont + JSON.toJSONString(arr[i]);
-
             i++;
         }
         jsont = jsont + "]";
-        model.addAttribute("jsont", jsont);
-        model.addAttribute("Tel", apper.getTel());
-        model.addAttribute("Arr", arr);
-        model.addAttribute("index", 0);
-        System.out.println(model.toString());
-        return "/Player/UserMain";
+        mv.addObject("jsont", jsont);
+        mv.addObject("Tel", apper.getTel());
+        mv.addObject("Arr", arr);
+        mv.addObject("index", 0);
+        return mv;
     }
+
 
     @RequestMapping("/user/register")
     public String User_rgPage() {
@@ -81,5 +80,15 @@ public class AppUserController {
     public String User_lgPage() {
         return "/Apper/login";
     }
+    @ResponseBody
+    @RequestMapping("/User/null")
+    public String User_nullPage(Model model) {
+        return "/Player/UserMain";
+    }
 
+    @ResponseBody
+    @RequestMapping("/null")
+    public String nullPage(Model model) {
+        return "/Player/UserMain";
+    }
 }

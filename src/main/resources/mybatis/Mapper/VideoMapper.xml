@@ -38,8 +38,8 @@
         <include refid="queryCondition_video" />
     </select>
 
-    <select id="getById_video" parameterType="int" resultMap="videoMap">
-    	SELECT * FROM video WHERE id =#{id}
+    <select id="getByName_video" parameterType="String" resultMap="videoMap">
+    	SELECT * FROM video WHERE Name =#{Name}
     </select>
 
     <insert id="create_video" parameterType="MainProgram.DBConnector.Bean.Video">

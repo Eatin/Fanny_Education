@@ -23,7 +23,13 @@ public class ApperService {
         return apperMapper.getByMap_apper(map);
     }
 
+    public Apper getByTel_apper(String Tel){
+        return apperMapper.getByTel_apper(Tel);
+    }
 
+    public int update_apper(Apper apper){
+        return apperMapper.update_apper(apper);
+    }
 
 
 }

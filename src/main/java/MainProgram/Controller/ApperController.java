@@ -25,9 +25,4 @@ public class ApperController {
         return "/Table/userall";
     }
 
-    @RequestMapping("/UserMain")
-    public String VideoPage(){
-        return  "/Player/UserMain";
-    }
-
 }

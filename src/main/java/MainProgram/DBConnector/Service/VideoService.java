@@ -24,7 +24,11 @@ public class VideoService {
         return videoMapper.getByMap_video(map);
     }
 
-
-
+    public Video getByName_video(String Name){
+        return videoMapper.getByName_video(Name);
+    }
+    public int update_video(Video video){
+        return videoMapper.update_video(video);
+    }
 
 }

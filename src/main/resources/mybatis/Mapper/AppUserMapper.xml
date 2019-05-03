@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--[{"Name":"张三","Sport":"25","Enterain":"25","Event":"25","Weight":"1","ID":"1"},{"Name":"李四","Sport":"23","Enterain":"23","Event":"23","Weight":"1","ID":"2"},{"Name":"王五","Sport":"24","Enterain":"24","Event":"24","Weight":"1","ID":"3"}]-->
-<mapper namespace="MainProgram.DBConnector.DAO.AppUserMapper">
+<mapper namespace="MainProgram.DBConnector.DAO.AppUserMapper" >
     <resultMap id="appuserMap" type="MainProgram.DBConnector.Bean.AppUser">
         <id property="id" column="id"/>
         <result property="Tel" column="user"/>
